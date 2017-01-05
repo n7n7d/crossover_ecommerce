@@ -1,24 +1,41 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "#{@product.name}") %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+<div class="well">
+  <table class="table">
+    <tbody>
+    <tr>
+      <th>Name</th>
+      <td> <%= @product.name %></td>
+    </tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+    <tr>
+      <th>Description</th>
+      <td> <%= @product.description %></td>
+    </tr>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+    <tr>
+      <th>Price</th>
+      <td> $<%= @product.price %></td>
+    </tr>
 
-<p>
-  <strong>Status:</strong>
-  <%= @product.status %>
-</p>
+    <tr>
+      <th>Status</th>
+      <td>
+        <% if @product.status == 0 %>
+               <p style="color: red;">Disabled</p>
+            <% elsif @product.status == 1%>
+               <p style="color: green;">Enabled</p>
+            <%else%>
+               <p>Unknown</p>
+           <%end%>
+            </td>
+    </tr>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+    </tbody>
+  </table>
+</div>
+<div class="btn-group">
+   <%= link_to 'Edit', edit_product_path(@product),class: "btn btn-default" %>
+   <%= link_to 'Back', products_path,class: "btn btn-default"%>
+   <%= link_to 'Destroy', @product,confirm: 'Are you sure?', method: :delete ,class: "btn btn-default"%>
+</div>

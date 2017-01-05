@@ -1,36 +1,19 @@
-<%= form_for(product) do |f| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@product) do |f| %>
+        <%= render 'shared/error_messages' %>
+        <%= f.label :name %>
+        <%= f.text_field :name , class: 'form-control'%>
 
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control' %>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description, rows: 6 %>  </div>
+        <%= f.label :price %>
+        <%= f.text_field :price, class: 'form-control'%>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+        <%= f.label :status%> <p style="color:mediumblue;font-size: 0.8em">(0 for Disable,1 for Enable)</p>
+        <%= f.select :status, (0..1), class: 'form-control' %>
+        <%= f.submit "Create Product", class: "btn btn-default" %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :status %>
-    <%= f.text_field :status %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

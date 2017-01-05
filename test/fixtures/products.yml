@@ -3,11 +3,17 @@
 one:
   description: MyString
   name: MyString
-  price: 
-  status: 
+  price: 120.3
+  status: 1
 
 two:
   description: MyString
   name: MyString
-  price: 
-  status: 
+  price: 123.4
+  status: 1
+
+india:
+  description: Apple iphone 128gb with dual camera
+  name: Iphone Gold
+  price: 123.4
+  status: 1
